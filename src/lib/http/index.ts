@@ -29,8 +29,6 @@ export async function http<R>(url: string, options?: HttpOptions):
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
   })
-  console.log("result text", await result.text())
-  console.log("result json", await result.json())
   if (result.ok) {
     const data = await result.json()
     return {data}

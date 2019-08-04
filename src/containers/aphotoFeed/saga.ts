@@ -29,7 +29,6 @@ export function* toggleOnlyScrapedPhotoFeeds({payload: currentCheck}: Action<boo
 
 export function* loadPhotoFeedsCards({type, payload: {pageNumber}})
 {
-  console.log("action", pageNumber)
   const {data, error} = yield call(fetchPhotoFeedsCards, pageNumber)
   yield put(PhotoFeedActions.requestPhotoFeedsFinished())
 

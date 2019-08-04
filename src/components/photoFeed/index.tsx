@@ -42,7 +42,6 @@ export class PhotoFeedCards extends React.PureComponent<PropsType> {
         hasMore={hasMore}
         initialLoad={false}
         loadMore={p => {
-          console.log("page", p, "current", currentPageNumber)
           isCardsLoading || _.throttle(() => requestPhotoFeedsCards({pageNumber: currentPageNumber + 1}), 250, { leading: false, trailing: true })()
         }}
         threshold={5}
