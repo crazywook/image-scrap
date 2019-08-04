@@ -1,7 +1,7 @@
 import * as React from "react"
 import Styled from "styled-components"
 
-import {PhotoDto} from "../../containers/aphotoFeed/types"
+import {PhotoDto} from "../../containers/photoFeed/types"
 import {ScrapedButton} from "./ScrapedButton"
 
 // import icAvatarCat from "./images/ic-avatar-cat@3x.png"
