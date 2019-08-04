@@ -1,0 +1,61 @@
+{
+  "name": "photoFeed",
+  "version": "1.0.0",
+  "description": "버킷 플레이스 과제",
+  "main": "index.js",
+  "scripts": {
+    "start": "TZ=Asia/Seoul NODE_ENV=local API_URL=http://localhost:8081 node webpackServer.js",
+    "build": "TZ=Asia/Seoul NODE_ENV=local API_URL=http://http://localhost:8081 webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crazywook/photoFeed.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crazywook/photoFeed/issues"
+  },
+  "homepage": "https://github.com/crazywook/photoFeed#readme",
+  "dependencies": {
+    "@types/react-infinite-scroller": "^1.2.1",
+    "immer": "^3.2.0",
+    "lodash": "^4.17.15",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-infinite-scroller": "^1.2.4",
+    "react-redux": "^7.1.0",
+    "react-router": "^5.0.1",
+    "react-toastify": "^5.3.2",
+    "redux": "^4.0.4",
+    "redux-actions": "^2.6.5",
+    "redux-saga": "^1.0.5",
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/html-webpack-plugin": "^3.2.1",
+    "@types/lodash": "^4.14.136",
+    "@types/node": "^10.14.12",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.5",
+    "@types/react-redux": "^7.1.1",
+    "@types/react-router": "^5.0.3",
+    "@types/redux": "^3.6.0",
+    "@types/redux-actions": "^2.6.1",
+    "@types/styled-components": "^4.1.18",
+    "@types/webpack": "^4.32.1",
+    "css-loader": "^3.1.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "redux-devtools-extension": "^2.13.8",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.0.4",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  }
+}
