@@ -1,6 +1,6 @@
 import {all} from "redux-saga/effects"
 
-import {watchPhotoFeedAction} from "../../containers/aphotoFeed/saga"
+import {watchPhotoFeedAction} from "../../containers/photoFeed/saga"
 
 function* rootSaga() {
   yield all([

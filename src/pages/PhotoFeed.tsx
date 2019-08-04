@@ -4,7 +4,7 @@ import {PhotoFeedCards} from "../components/photoFeed"
 import {Alarm} from "../components/photoFeed/Alarm"
 import {PhotoFeedBody} from "../components/photoFeed/PhotoFeedBody"
 import {ScrapToggle} from "../components/photoFeed/ScrapToggle"
-import {PhotoFeedContainer} from "../containers/aphotoFeed/PhotoFeedContainer"
+import {PhotoFeedContainer} from "../containers/photoFeed/PhotoFeedContainer"
 
 export class PhotoFeed extends React.Component {
   render() {

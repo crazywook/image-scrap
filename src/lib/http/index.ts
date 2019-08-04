@@ -50,7 +50,6 @@ function xhrRequest(url: string, options?: HttpOptions) {
     const method = options && options.method || "GET"
 
     const xhr = new XMLHttpRequest()
-    xhr.setRequestHeader("Content-Type", "application/json")
     xhr.withCredentials = false
 
     xhr.addEventListener("readystatechange", function() {
@@ -63,6 +62,7 @@ function xhrRequest(url: string, options?: HttpOptions) {
 
     xhr.open(method, url)
     xhr.setRequestHeader("cache-control", "no-cache")
+    xhr.setRequestHeader("Content-Type", "application/json")
 
     xhr.send(JSON.stringify(data))
   })

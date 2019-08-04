@@ -3,17 +3,17 @@ import {connect} from "react-redux"
 import {bindActionCreators} from "redux"
 
 import RootState from "../../store/redux/state"
-import {PhotoFeedActions, requestScrapedIds, toggleOnlyScrapPhotoFeeds} from "./action"
+import {PhotoFeedActions} from "./action"
 import {PhotoFeedState} from "./types"
 
 type PropertyProps = PhotoFeedState
 
 interface DispatchProps {
   requestPhotoFeedsCards: typeof PhotoFeedActions.requestPhotoFeedsCards
-  requestScrapedIds: typeof requestScrapedIds
+  requestScrapedIds: typeof PhotoFeedActions.requestScrapedIds
   requestScrapedIdsAdd: typeof PhotoFeedActions.addScrapedIds
   requestScrapedIdsRemove: typeof PhotoFeedActions.removeScrapedIds
-  toggleOnlyScrapPhotoFeeds: typeof toggleOnlyScrapPhotoFeeds
+  toggleOnlyScrapPhotoFeeds: typeof PhotoFeedActions.toggleOnlyScraped
   toggleCardScrap: typeof PhotoFeedActions.toggleCardScrap
 }
 
@@ -46,9 +46,9 @@ const Container = connect<PropertyProps, DispatchProps, {}, RootState>(
     }
   },
   (dispatch: any) => bindActionCreators({
-    toggleOnlyScrapPhotoFeeds,
+    toggleOnlyScrapPhotoFeeds: PhotoFeedActions.toggleOnlyScraped,
     requestPhotoFeedsCards: PhotoFeedActions.requestPhotoFeedsCards,
-    requestScrapedIds,
+    requestScrapedIds: PhotoFeedActions.requestScrapedIds,
     requestScrapedIdsAdd: PhotoFeedActions.addScrapedIds,
     requestScrapedIdsRemove: PhotoFeedActions.removeScrapedIds,
     toggleCardScrap: PhotoFeedActions.toggleCardScrap,
