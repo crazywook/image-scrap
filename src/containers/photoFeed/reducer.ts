@@ -29,6 +29,7 @@ const reducer = handleActions(
   {
     [PHOTO_FEEDS_CARDS_RECEIVED]: (state, {payload}) =>
       produce(state, draft => {
+        console.log("payload", payload)
         draft.cards = [
           ...draft.cards,
           ...payload.cards
@@ -51,24 +52,24 @@ const reducer = handleActions(
       produce(state, draft => {
         draft.scrapedIds = payload.scrapedIds
       }),
-     [PHOTO_FEEDS_ADD_SCRAPED_ID]: (state, {payload}: {payload: any}) =>
+    [PHOTO_FEEDS_ADD_SCRAPED_ID]: (state, {payload}: {payload: any}) =>
       produce(state, draft => {
         draft.scrapedIds = new Set(draft.scrapedIds.add(payload.id))
       }),
-     [PHOTO_FEEDS_REMOVE_SCRAPED_ID]: (state, {payload}: {payload: any}) =>
+    [PHOTO_FEEDS_REMOVE_SCRAPED_ID]: (state, {payload}: {payload: any}) =>
       produce(state, draft => {
         draft.scrapedIds.delete(payload.id)
         draft.scrapedIds = new Set(draft.scrapedIds)
       }),
-      [PHOTO_FEEDS_REQUEST_CARDS]: state =>
+    [PHOTO_FEEDS_REQUEST_CARDS]: state =>
       produce(state, draft => {
         draft.isCardsLoading = true
       }),
-      [PHOTO_FEEDS_REQUEST_FINISHED]: state =>
+    [PHOTO_FEEDS_REQUEST_FINISHED]: state =>
         produce(state, draft => {
           draft.isCardsLoading = false
       }),
-      [PHOTO_FEEDS_TOAST_MESSAGE]: (state, {payload: {toastMessage}}) =>
+    [PHOTO_FEEDS_TOAST_MESSAGE]: (state, {payload: {toastMessage}}) =>
         produce(state, draft => {
           draft.toastMessage = toastMessage
       }),

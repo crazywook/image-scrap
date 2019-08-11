@@ -36,8 +36,3 @@ export const PhotoFeedActions = {
   uncheckOnlyScraped: createAction(PHOTO_FEEDS_UNCHECK_ONLY_SCRAPED),
   toastMessage: createAction<{toastMessage: string}>(PHOTO_FEEDS_TOAST_MESSAGE)
 }
-
-export const requestPhotoFeedsCards = (options: RequestCardsOptions) => { console.log("option", options.pageNumber); return PhotoFeedActions.requestPhotoFeedsCards(options) }
-export const toggleOnlyScrapPhotoFeeds = (currentChecked: boolean) => PhotoFeedActions.toggleOnlyScraped(currentChecked)
-export const updatePhotoFeedsHasMore = (hasMore: boolean) => PhotoFeedActions.updateHasMore(hasMore)
-export const requestScrapedIds = () => PhotoFeedActions.requestScrapedIds()

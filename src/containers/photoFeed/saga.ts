@@ -29,20 +29,24 @@ export function* toggleOnlyScrapedPhotoFeeds({payload: currentCheck}: Action<boo
 
 export function* loadPhotoFeedsCards({type, payload: {pageNumber}})
 {
-  const {data, error} = yield call(fetchPhotoFeedsCards, pageNumber)
+  const {data: graphData, error} = yield call(fetchPhotoFeedsCards, pageNumber)
   yield put(PhotoFeedActions.requestPhotoFeedsFinished())
 
-  if (!(data && data.length)) {
-
-    yield put(PhotoFeedActions.updateHasMore(false))
-    return
-  }
   if (error) {
     yield put(PhotoFeedActions.requestPhotoFeedsCardsFailed())
     yield put(PhotoFeedActions.updateHasMore(false))
     return
   }
 
+  const data = graphData.data.photo
+
+  if (!(data && data.length)) {
+
+    yield put(PhotoFeedActions.updateHasMore(false))
+    return
+  }
+
+  console.log("saga data", data)
   yield put(PhotoFeedActions.receivePhotoFeedsCards({
     cards: data,
     currentPageNumber: pageNumber

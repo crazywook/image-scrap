@@ -3,6 +3,7 @@ import {HttpRequest} from "./HttpRequest"
 interface HttpOptions {
   baseUrl?: string
   method?: string
+  data?: {}
 }
 
 export async function http<R>(url: string, options?: HttpOptions):
@@ -12,26 +13,25 @@ export async function http<R>(url: string, options?: HttpOptions):
   }>
 {
   let method: string
+  let data: {} | undefined
   if (options) {
     method = options.method || "get"
+    data = options.data || undefined
   } else {
     method = "get"
+    data = undefined
   }
 
   const fullUrl = url
   const result = await fetch(fullUrl, {
     method,
-    mode: "no-cors",
-    credentials: "include",
-    cache: "no-cache",
-    headers: {
-      "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
+    body: JSON.stringify(data)
   })
+  console.log("result", result)
   if (result.ok) {
-    const data = await result.json()
-    return {data}
+    const dataResult = await result.json()
+    console.log("dataResult", dataResult)
+    return {data: dataResult}
   }
 
   return {
@@ -39,10 +39,11 @@ export async function http<R>(url: string, options?: HttpOptions):
   }
 }
 
-function xhrRequest(url: string, options?: any) {
+function xhrRequest(url: string, options?: HttpOptions) {
   return new Promise((resolve, reject) => {
 
-    const data = null
+    const data = options && options.data || null
+    const method = options && options.method || "GET"
 
     const xhr = new XMLHttpRequest()
     xhr.withCredentials = false
@@ -55,10 +56,11 @@ function xhrRequest(url: string, options?: any) {
       }
     })
 
-    xhr.open("GET", url)
+    xhr.open(method, url)
     xhr.setRequestHeader("cache-control", "no-cache")
+    xhr.setRequestHeader("Content-Type", "application/json")
 
-    xhr.send(data)
+    xhr.send(JSON.stringify(data))
   })
 }
 
@@ -70,8 +72,7 @@ export class HttpWrapper implements HttpRequest {
     readonly options?: {
       credentials: boolean
     }
-  ) {
-  }
+  ) { }
 
   get<R>(url: string) {
     const fullUrl = `${this.baseUrl}${url}`
@@ -82,29 +83,25 @@ export class HttpWrapper implements HttpRequest {
 
   post<R>(url: string) {
     const fullUrl = `${this.baseUrl}${url}`
-    return http<R>(fullUrl, {
+    return this.httpRequest<R>(fullUrl, {
       method: "post"
     })
   }
 
   put<R>(url: string, data) {
     const fullUrl = `${this.baseUrl}${url}`
-    return http<R>(fullUrl, {
-      method: "put"
+    return this.httpRequest<R>(fullUrl, {
+      method: "put",
+      data
     })
   }
 
   delete<R>(url: string) {
     const fullUrl = `${this.baseUrl}${url}`
-    return http<R>(fullUrl, {
+    return this.httpRequest<R>(fullUrl, {
       method: "delete"
     })
   }
-}
-
-export function createHttp(options?: HttpOptions) {
-
-  return (url, method) => http(url, options)
 }
 
 export const bucketplaceHttp = new HttpWrapper(
@@ -113,4 +110,9 @@ export const bucketplaceHttp = new HttpWrapper(
   {
     credentials: false
   }
+)
+
+export const graphHttp = new HttpWrapper(
+  http,
+  "http://localhost:4000/graphql",
 )

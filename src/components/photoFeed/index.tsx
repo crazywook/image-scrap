@@ -2,8 +2,8 @@ import _ from "lodash"
 import * as React from "react"
 import InfiniteScroll from "react-infinite-scroller"
 
-import {PhotoFeedActions, requestPhotoFeedsCards as requestPhotoFeedsCards_} from "../../containers/aphotoFeed/action"
-import {PhotoFeedState} from "../../containers/aphotoFeed/types"
+import {PhotoFeedActions} from "../../containers/photoFeed/action"
+import {PhotoFeedState} from "../../containers/photoFeed/types"
 import {PhotoFeedCell} from "./PhotoFeedCell"
 
 // import Styled from "styled-components"
@@ -12,7 +12,7 @@ interface PropsType {
   photoFeedProps:
     | PhotoFeedState
     & {
-      requestPhotoFeedsCards: typeof requestPhotoFeedsCards_
+      requestPhotoFeedsCards: typeof PhotoFeedActions.requestPhotoFeedsCards
       toggleCardScrap: typeof PhotoFeedActions.toggleCardScrap
     }
 }
