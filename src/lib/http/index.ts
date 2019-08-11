@@ -13,28 +13,24 @@ export async function http<R>(url: string, options?: HttpOptions):
   }>
 {
   let method: string
-  let data: {}
+  let data: {} | undefined
   if (options) {
     method = options.method || "get"
-    data = options.data || {}
+    data = options.data || undefined
   } else {
     method = "get"
-    data = {}
+    data = undefined
   }
 
   const fullUrl = url
   const result = await fetch(fullUrl, {
     method,
-    mode: "no-cors",
-    credentials: "include",
-    cache: "no-cache",
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: JSON.stringify(data)
   })
+  console.log("result", result)
   if (result.ok) {
     const dataResult = await result.json()
+    console.log("dataResult", dataResult)
     return {data: dataResult}
   }
 
@@ -76,8 +72,7 @@ export class HttpWrapper implements HttpRequest {
     readonly options?: {
       credentials: boolean
     }
-  ) {
-  }
+  ) { }
 
   get<R>(url: string) {
     const fullUrl = `${this.baseUrl}${url}`
@@ -115,4 +110,9 @@ export const bucketplaceHttp = new HttpWrapper(
   {
     credentials: false
   }
+)
+
+export const graphHttp = new HttpWrapper(
+  http,
+  "http://localhost:4000/graphql",
 )

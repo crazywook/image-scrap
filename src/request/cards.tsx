@@ -1,5 +1,12 @@
-import {bucketplaceHttp as http} from "../lib/http"
+import {graphHttp as http} from "../lib/http"
 
-export async function fetchPhotoFeedsCards(options: number) {
-  return await http.get(`/cards/page_${options}.json`)
+export function fetchPhotoFeedsCards(options: number) {
+  return http.get(`?query={
+    photo {
+      id
+      image_url
+      nickname
+      profile_image_url
+    }
+  }`)
 }
