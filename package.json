@@ -1,7 +1,7 @@
 {
   "name": "photoFeed",
   "version": "1.0.0",
-  "description": "버킷 플레이스 과제",
+  "description": "image scrap",
   "main": "index.js",
   "scripts": {
     "start": "TZ=Asia/Seoul NODE_ENV=local API_URL=http://localhost:8081 node webpackServer.js",
