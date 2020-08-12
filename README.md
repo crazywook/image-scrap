@@ -15,3 +15,7 @@ routing: express
 middlerware" GraphQL
 Database: MongoDB
 ODM: mongoose  
+
+## 생각
+요즘 hooks를 쓰면서 전역 store를 많이 사용하지 않는다.
+포폴겸 공부하기 위해 만든 프로젝트라 모든 걸 다 saga로 처리해 보고 있다.
