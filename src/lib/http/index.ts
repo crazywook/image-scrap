@@ -1,3 +1,4 @@
+import FetchWrapper from "./FetchWrapper"
 import {HttpRequest} from "./HttpRequest"
 
 interface HttpOptions {
@@ -37,31 +38,6 @@ export async function http<R>(url: string, options?: HttpOptions):
   return {
     error: result.statusText
   }
-}
-
-function xhrRequest(url: string, options?: HttpOptions) {
-  return new Promise((resolve, reject) => {
-
-    const data = options && options.data || null
-    const method = options && options.method || "GET"
-
-    const xhr = new XMLHttpRequest()
-    xhr.withCredentials = false
-
-    xhr.addEventListener("readystatechange", function() {
-      if (this.readyState === 4) {
-        resolve({
-          data: JSON.parse(this.responseText)
-        })
-      }
-    })
-
-    xhr.open(method, url)
-    xhr.setRequestHeader("cache-control", "no-cache")
-    xhr.setRequestHeader("Content-Type", "application/json")
-
-    xhr.send(JSON.stringify(data))
-  })
 }
 
 export class HttpWrapper implements HttpRequest {
@@ -104,14 +80,9 @@ export class HttpWrapper implements HttpRequest {
   }
 }
 
-export const bucketplaceHttp = new HttpWrapper(
-  xhrRequest,
-  "https://s3.ap-northeast-2.amazonaws.com/bucketplace-coding-test",
-  {
-    credentials: false
-  }
+export const graphHttpV2 = new FetchWrapper(
+  "http://localhost:4000/graphql",
 )
-
 export const graphHttp = new HttpWrapper(
   http,
   "http://localhost:4000/graphql",
