@@ -9,11 +9,19 @@ if (!mongo) {
 
 const uri = `mongodb+srv://${mongo.username}:${mongo.password}@resume-osj6d.mongodb.net/photoFeeds?retryWrites=true&w=majority`
 
-mongoose.connect(uri, { useNewUrlParser: true })
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 
-const db = mongoose.connection
+export const db = mongoose.connection
 
-db.on("error", (err) => console.log("connection error: ", err))
+export function disconnect() {
+  db.close()
+}
+
+db.on("error", err => console.log("connection error: ", err))
+db.on("close", () => console.log("mongodb closed"))
 db.once("open", async () => {
   console.log("mongodb.net/photoFeeds connection open")
 })

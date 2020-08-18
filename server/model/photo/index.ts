@@ -7,6 +7,6 @@ const photoSchema = new Schema({
   profile_image_url: String,
 })
 
-const photo = mongoose.model("photo", photoSchema)
+const Photo = mongoose.model("photo", photoSchema)
 
-export default photo
+export default Photo

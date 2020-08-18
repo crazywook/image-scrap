@@ -11,23 +11,29 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/mongoose": "^5.5.12",
+    "@types/mongoose": "^5.7.36",
     "apollo-boost": "^0.4.3",
     "apollo-server": "^2.8.1",
     "apollo-server-express": "^2.8.1",
+    "chai": "^4.2.0",
     "cors": "^2.8.5",
     "cross-fetch": "^3.0.4",
     "express": "^4.17.1",
     "graphql": "^14.4.2",
     "loadash": "^1.0.0",
-    "mongoose": "^5.6.9",
+    "mocha": "^8.1.1",
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.10.0",
     "node-fetch": "^2.6.0",
     "react": "^16.8.6",
     "react-apollo": "^2.5.8",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.2",
     "nodemon": "^1.19.1",
+    "tap": "^14.10.8",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   }

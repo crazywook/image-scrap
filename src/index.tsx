@@ -6,4 +6,4 @@ import {App} from "./App"
 render(
   <App />,
   document.getElementById("react-root"),
-);
+)

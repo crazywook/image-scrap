@@ -1,7 +1,7 @@
-import photo from "./photo"
+import Photo from "./photo"
 
 const models = {
-  photo
+  photo: Photo
 }
 
 export default models
