@@ -20,7 +20,7 @@
   "homepage": "https://github.com/crazywook/photoFeed#readme",
   "dependencies": {
     "@types/react-infinite-scroller": "^1.2.1",
-    "immer": "^3.2.0",
+    "immer": "^8.0.1",
     "lodash": "^4.17.15",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
